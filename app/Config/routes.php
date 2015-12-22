@@ -1,0 +1,69 @@
+<?php
+Router::parseExtensions('json', 'xml');
+
+Router::connect('/', array('controller' => 'Pages', 'action' => 'home'));
+/*
+Router::connect('/sitemap.xml', array(
+	'controller' => 'sitemap',
+	'action' => 'xml'
+));
+*/
+
+Router::connect('/product/:slug',
+	array(
+		'controller' => 'Products',
+		'action' => 'view',
+	),
+	array(
+		'pass' => array('slug')
+	)
+);
+
+/*
+Router::connect('/pages/view/:slug.html', 
+	array(
+		'controller' => 'pages', 
+		'action' => 'view',
+	),
+	array(
+		'pass' => array('slug')
+	)
+);
+
+Router::connect('/articles/:slug.html', 
+	array(
+		'controller' => 'Articles', 
+		'action' => 'view',
+		'objectType' => 'SiteArticle'
+	),
+	array(
+		'pass' => array('slug')
+	)
+);
+
+Router::connect('/articles/', array(
+	'controller' => 'Articles', 
+	'action' => 'index',
+	'objectType' => 'SiteArticle'
+));
+
+Router::connect('/news/:slug.html', 
+	array(
+		'controller' => 'Articles', 
+		'action' => 'view',
+		'objectType' => 'News'
+	),
+	array(
+		'pass' => array('slug')
+	)
+);
+
+Router::connect('/news/', array(
+	'controller' => 'Articles', 
+	'action' => 'index',
+	'objectType' => 'News'
+));
+*/
+CakePlugin::routes();
+
+require CAKE.'Config'.DS.'routes.php';
