@@ -30,7 +30,16 @@ class FieldTypes {
 			// self::URL => __d('form', 'URL'),
 			// self::UPLOAD_FILE => __d('form', 'Upload file'),
 			// self::EDITOR => __d('form', 'Editor'),
-			// self::FORMULA => __d('form', 'Formula')
+			self::FORMULA => __d('form', 'Formula')
+		);
+		return ($id) ? Hash::get($aTypes, $id) : $aTypes;
+	}
+	
+	static public function getConstTypes($id = false) {
+		$aTypes = array(
+			// self::STRING => __d('form', 'String'),
+			self::INT => __d('form', 'Integer'),
+			self::FLOAT => __d('form', 'Float'),
 		);
 		return ($id) ? Hash::get($aTypes, $id) : $aTypes;
 	}

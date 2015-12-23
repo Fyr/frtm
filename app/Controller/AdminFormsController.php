@@ -21,10 +21,12 @@ class AdminFormsController extends AdminController {
 	public function index($object_id) {
 		$this->paginate = array(
 			'conditions' => compact('object_id'),
-			'fields' => array('id', 'field_type', 'label', 'key', 'required', 'sort_order'),
+			'fields' => array('id', 'field_type', 'label', 'key', 'for_calc', 'sort_order'),
 			'order' => array('PMFormField.sort_order' => 'asc')
 		);
-		$this->PCTableGrid->paginate('PMFormField');
+		$aRows = $this->PCTableGrid->paginate('PMFormField');
+		$this->set('aRows', $aRows);
+		$this->set('aTypes', FieldTypes::getTypes());
 		$this->set('objectID', $object_id);
 		$this->set('category', $this->CategoryProduct->findById($object_id));
 		$this->currMenu = 'Catalog';

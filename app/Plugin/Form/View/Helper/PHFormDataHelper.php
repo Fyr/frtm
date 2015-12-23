@@ -49,8 +49,17 @@ class PHFormDataHelper extends AppHelper {
 		$html = '';
 		foreach($form as $field_id => $row) {
 			$field = $row['PMFormField'];
-			$value = Hash::get($rowData, 'fk_'.$field['id']);
-			$html.= $this->_renderInput($field, $value);
+			if ($field['field_type'] != FieldTypes::FORMULA) {
+				$value = Hash::get($rowData, 'fk_' . $field['id']);
+				if (!$value) { // set default value
+					if ($field['field_type'] == FieldTypes::INT) {
+						$value = '0';
+					} elseif ($field['field_type'] == FieldTypes::FLOAT) {
+						$value = '0.00';
+					}
+				}
+				$html .= $this->_renderInput($field, $value);
+			}
 		}
 		return $html;
 	}

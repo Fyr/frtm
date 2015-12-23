@@ -20,7 +20,8 @@
 		'SEO' => $this->element('Seo.edit')
     );
     if ($objectType == 'Product') {
-    	$aTabs['Related Products'] = $this->element('/AdminContent/admin_edit_RelatedProducts');
+    	// $aTabs['Related Products'] = $this->element('/AdminContent/admin_edit_RelatedProducts');
+        $aTabs['Tech-params'] = $this->element('/AdminProduct/admin_edit_TechParams', compact('form', 'formValues'));
     }
     if ($id) {
         $aTabs['Media'] = $this->element('Media.edit', array('object_type' => $objectType, 'object_id' => $id));

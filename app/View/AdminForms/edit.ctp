@@ -24,7 +24,7 @@
 	</span>
 <?
 	echo $this->PHForm->input('sort_order', array('class' => 'input-mini'));
-	echo $this->PHForm->input('required');
+	echo $this->PHForm->input('for_calc', array('label' => array('text' => __('For calculator'), 'class' => 'control-label')));
 	echo $this->element('admin_content_end');
 	echo $this->element('Form.form_actions', array('backURL' => $this->Html->url(array('action' => 'index', $objectID))));
 	echo $this->PHForm->end();

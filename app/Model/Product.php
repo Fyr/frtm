@@ -26,6 +26,12 @@ class Product extends Article {
 			'foreignKey' => 'object_id',
 			'conditions' => array('Seo.object_type' => 'Product'),
 			'dependent' => true
+		),
+		'PMFormData' => array(
+			'className' => 'Form.PMFormData',
+			'foreignKey' => 'object_id',
+			'conditions' => array('PMFormData.object_type' => 'ProductParam'),
+			'dependent' => true
 		)
 	);
 	

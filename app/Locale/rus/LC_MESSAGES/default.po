@@ -26,7 +26,7 @@ msgid "Edit tech.param"
 msgstr "Редактировать параметр"
 
 msgid "Tech-params"
-msgstr "Параметры услуг"
+msgstr "Доп.параметры"
 
 msgid "Products by sections"
 msgstr "Каталог по разделам"
@@ -41,7 +41,7 @@ msgid "Home"
 msgstr "Главная"
 
 msgid "Products"
-msgstr "Услуги"
+msgstr "Продукция"
 
 msgid "About us"
 msgstr "О нас"
@@ -206,7 +206,7 @@ msgid "Create Product category"
 msgstr "Создать категорию продукта"
 
 msgid "Create Product"
-msgstr "Создать Продукт"
+msgstr "Создать продукт"
 
 msgid "Edit Article"
 msgstr "Редактировать Статью"
@@ -215,19 +215,19 @@ msgid "Edit Static page"
 msgstr "Редактировать Стат.страницу"
 
 msgid "Edit News article"
-msgstr "Редактировать Новость"
+msgstr "Редактировать новость"
 
 msgid "Edit Category"
 msgstr "Редактировать Категорию"
 
 msgid "Edit Subcategory"
-msgstr "Редактировать Подкатегорию"
+msgstr "Редактировать подкатегорию"
 
 msgid "Edit Product сategory"
 msgstr "Редактировать категорию продукта"
 
 msgid "Edit Product"
-msgstr "Редактировать Продукт"
+msgstr "Редактировать продукт"
 
 msgid "Spam protection"
 msgstr "Защита от спама"
@@ -260,6 +260,9 @@ msgid "Edit Parameter"
 msgstr "Редактировать параметр"
 
 msgid "Field Type"
+msgstr "Тип поля"
+
+msgid "Field type"
 msgstr "Тип поля"
 
 msgid "Label"
@@ -369,9 +372,6 @@ msgstr "Название (RUS)"
 
 msgid "Motor"
 msgstr "Мотор"
-
-msgid "Detail num"
-msgstr "Номер детали"
 
 msgid "Code"
 msgstr "Код"
@@ -488,7 +488,7 @@ msgid "New order"
 msgstr "Новый заказ"
 
 msgid "Edit Product category"
-msgstr "Редактировать категория продукта"
+msgstr "Редактировать категорию продукта"
 
 msgid "Site map"
 msgstr "Карта сайта"
@@ -498,3 +498,6 @@ msgstr "Страница не найдена"
 
 msgid "Error!"
 msgstr "Ошибка!"
+
+msgid "For calculator"
+msgstr "Для калькулятора"

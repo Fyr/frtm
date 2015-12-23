@@ -1,23 +1,13 @@
 <?php
 Router::parseExtensions('json', 'xml');
 
-Router::connect('/', array('controller' => 'Pages', 'action' => 'home'));
+Router::connect('/', array('controller' => 'Admin', 'action' => 'index'));
 /*
 Router::connect('/sitemap.xml', array(
 	'controller' => 'sitemap',
 	'action' => 'xml'
 ));
 */
-
-Router::connect('/product/:slug',
-	array(
-		'controller' => 'Products',
-		'action' => 'view',
-	),
-	array(
-		'pass' => array('slug')
-	)
-);
 
 /*
 Router::connect('/pages/view/:slug.html', 

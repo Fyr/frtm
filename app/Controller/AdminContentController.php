@@ -41,13 +41,7 @@ class AdminContentController extends AdminController {
         $this->set('objectType', $objectType);
         $this->set('objectID', $objectID);
         $this->set('aRowset', $aRowset);
-        /*
-        if ($objectType == 'SubcategoryArticle') {
-        	$this->set('categoryArticle', $this->CategoryArticle->findById($objectID));
-        } elseif ($objectType == 'CarSubtype') {
-        	$this->set('carType', $this->CarType->findById($objectID));
-        }
-        */
+
         if (in_array($objectType, array('CategoryProduct', 'Product'))) {
         	$this->currMenu = 'Catalog';
         }
@@ -85,18 +79,6 @@ class AdminContentController extends AdminController {
 		// $objectID = $this->request->data('Article.object_id');
 		
 		if ($lSaved) {
-			/*
-			if ($objectType == 'Subcategory') {
-				// Save form for this subcategory
-				$form = $this->PMForm->getObject('Subcategory', $id);
-				if (!$form) {
-					$this->PMForm->save(array('object_type' => 'Subcategory', 'object_id' => $id));
-					$formID = $this->PMForm->id;
-				} else {
-					$formID = $form['PMForm']['id'];
-				}
-			}
-			*/
 			if ($objectType == 'SiteArticle') {
 				$subcategory = $this->SubcategoryArticle->findById($this->request->data('Article.subcat_id'));
 				$this->request->data('Article.cat_id', $subcategory['CategoryArticle']['id']);
@@ -107,44 +89,21 @@ class AdminContentController extends AdminController {
 			return $this->redirect(($this->request->data('apply')) ? $indexRoute : $editRoute);
 		}
 		
-		if ($objectType == 'Product') {
-			$this->set('aCategoryOptions', $this->Article->getObjectOptions('CategoryProduct'));
-			$conditions = array('object_type' => 'Product', 'published' => true);
-			$order = 'Article.title';
-			$this->set('aProductOptions', $this->Article->find('list', compact('conditions', 'order')));
-		} elseif ($objectType == 'SiteArticle') {
+		if ($objectType == 'SiteArticle') {
 			$aCategoryOptions = $this->SubcategoryArticle->find('all');
 			$aCategoryOptions = Hash::combine($aCategoryOptions, '{n}.SubcategoryArticle.id', '{n}.SubcategoryArticle.title', '{n}.CategoryArticle.title');
 			$this->set('aCategoryOptions', $aCategoryOptions);
 		} elseif ($objectType == 'SubcategoryArticle') {
 			$this->set('categoryArticle', $this->CategoryArticle->findById($objectID));
 		}
-		
-		// $this->currMenu = 'Content';
+
+		if (in_array($objectType, array('CategoryProduct', 'Product'))) {
+			$this->currMenu = 'Catalog';
+		}
 		
 		if (!$this->request->data('Article.sorting')) {
 			$this->request->data('Article.sorting', '0');
 		}
-		/*
-		if ($objectType == 'Subcategory' && $objectID) {
-        	$this->set('category', $this->Category->findById($objectID));
-        	$this->currMenu = 'Category';
-        	
-			$this->paginate = array(
-	    		'fields' => array('field_type', 'label', 'fieldset', 'required'),
-	    		'limit' => 100
-	    	);
-	    	$this->PCTableGrid->paginate('FormField');
-	    	
-	    	$formKeys = array();
-	    	if ($id) {
-	    		$form = $this->PMForm->getObject('Subcategory', $id);
-	    		$formKeys = $this->PMForm->getFormKeys(Hash::get($form, 'PMForm.id'));
-	    	}
-	    	$this->set('formKeys', $formKeys);
-		}
-		
-		*/
-		
+
 	}
 }
