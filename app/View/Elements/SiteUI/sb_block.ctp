@@ -1,4 +1,12 @@
 <div class="block">
-	<h2><?=$title?></h2>
-	<?=$content?>
+	<div class="head">
+		<div class="innerHead">
+			<span class="icon icon-leftUzor"></span>
+			<span class="text"><?=$title?></span>
+			<span class="icon icon-rightUzor"></span>
+		</div>
+	</div>
+	<div class="carcass">
+		<?=$content?>
+	</div>
 </div>

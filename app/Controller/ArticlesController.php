@@ -1,16 +1,19 @@
 <?php
 App::uses('AppController', 'Controller');
+App::uses('AppModel', 'Model');
+App::uses('SiteArticle', 'Model');
+App::uses('News', 'Model');
 class ArticlesController extends AppController {
 	public $name = 'Articles';
 	public $uses = array('SiteArticle', 'News');
 	public $helpers = array('ObjectType');
 	
-	const PER_PAGE = 3;
+	const PER_PAGE = 5;
 	
 	protected $objectType;
 
 	public function beforeFilter() {
-		$this->objectType = 'SiteArticle';
+		$this->objectType = $this->getObjectType();
 		
 		parent::beforeFilter();
 	}
@@ -35,17 +38,12 @@ class ArticlesController extends AppController {
 	}
 	
 	public function view($slug) {
-		if (is_numeric($slug)) {
-			$article = $this->{$this->objectType}->findById($slug);
-		} else {
-			$article = $this->{$this->objectType}->findBySlug($slug);
-		}
+		$article = $this->{$this->objectType}->findBySlug($slug);
 		
 		if (!$article && !TEST_ENV) {
-			return $this->redirect('/');
+			// return $this->redirect('/');
 		}
 		
 		$this->set('article', $article);
-		$this->seo = $article['Seo'];
 	}
 }

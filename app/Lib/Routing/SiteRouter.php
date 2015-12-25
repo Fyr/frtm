@@ -7,32 +7,32 @@ class SiteRouter extends Router {
 		return $objectType;
 	}
 	
-	static public function url($article, $lFull = false) {
+	static public function url($article) {
 		$objectType = self::getObjectType($article);
-		$aControllers = array(
-			'SiteArticle' => 'Articles',
-			'Product' => 'Products',
-			'News' => 'News',
-			'Page' => 'Pages'
-		);
-		$controller = (isset($aControllers[$objectType])) ? $aControllers[$objectType] : 'Articles';
-		$url = array('controller' => $controller, 'action' => 'view');
-		if ($slug = $article[$objectType]['slug']) {
-			$url[] = $slug;
-			// $url['ext'] = 'html';
-			// $url['ext'] = 'html';
-			// $url['objectType'] = $objectType;
-			// $url[] = $slug.'.html';
-			// $url['ext'] = 'html';
-		} else {
-			$url[] = $article[$objectType]['id'];
-		}
-
 		if ($objectType == 'Product') {
-			fdebug($url);
+			$url = array(
+				'controller' => 'SiteProducts', 
+				'action' => 'view',
+				'category' => $article['CategoryProduct']['slug'],
+				'objectType' => 'Product',
+				'slug' => $article['Product']['slug']
+			);
+		} elseif ($objectType == 'CategoryProduct') {
+			$url = array(
+				'controller' => 'SiteProducts', 
+				'action' => 'index',
+				'category' => $article['CategoryProduct']['slug'],
+				'objectType' => 'Product'
+			);
+		} else {
+			$url = array(
+				'controller' => 'Articles', 
+				'action' => 'view',
+				'objectType' => $objectType,
+				'slug' => $article[$objectType]['slug']
+			);
 		}
-
-		return parent::url($url, $lFull);
+		return parent::url($url);
 	}
 	
 }

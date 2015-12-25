@@ -1,18 +1,11 @@
 <?php
 Router::parseExtensions('json', 'xml');
 
-Router::connect('/', array('controller' => 'Admin', 'action' => 'index'));
-/*
-Router::connect('/sitemap.xml', array(
-	'controller' => 'sitemap',
-	'action' => 'xml'
-));
-*/
+Router::connect('/', array('controller' => 'Pages', 'action' => 'home'));
 
-/*
-Router::connect('/pages/view/:slug.html', 
+Router::connect('/pages/view/:slug.html',
 	array(
-		'controller' => 'pages', 
+		'controller' => 'pages',
 		'action' => 'view',
 	),
 	array(
@@ -20,40 +13,73 @@ Router::connect('/pages/view/:slug.html',
 	)
 );
 
-Router::connect('/articles/:slug.html', 
+Router::connect('/articles', array(
+	'controller' => 'Articles',
+	'action' => 'index',
+	'objectType' => 'SiteArticle',
+),
+	array('named' => array('page' => 1))
+);
+Router::connect('/articles/:slug',
 	array(
-		'controller' => 'Articles', 
+		'controller' => 'Articles',
 		'action' => 'view',
 		'objectType' => 'SiteArticle'
 	),
-	array(
-		'pass' => array('slug')
-	)
+	array('pass' => array('slug'))
 );
-
-Router::connect('/articles/', array(
-	'controller' => 'Articles', 
+Router::connect('/articles/page/:page', array(
+	'controller' => 'Articles',
 	'action' => 'index',
 	'objectType' => 'SiteArticle'
-));
-
-Router::connect('/news/:slug.html', 
-	array(
-		'controller' => 'Articles', 
-		'action' => 'view',
-		'objectType' => 'News'
-	),
-	array(
-		'pass' => array('slug')
-	)
+),
+	array('named' => array('page' => '[\d]*'))
 );
 
-Router::connect('/news/', array(
-	'controller' => 'Articles', 
-	'action' => 'index',
-	'objectType' => 'News'
-));
-*/
+Router::connect('/products',
+	array(
+		'controller' => 'SiteProducts',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('named' => array('page' => 1))
+);
+Router::connect('/products/:category',
+	array(
+		'controller' => 'SiteProducts',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('pass' => array('category'))
+);
+Router::connect('/products/page/:page',
+	array(
+		'controller' => 'SiteProducts',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('named' => array('page' => '[\d]*'))
+);
+Router::connect('/products/:category/page/:page',
+	array(
+		'controller' => 'SiteProducts',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array(
+		'pass' => array('category'),
+		'named' => array('page' => '[\d]*')
+	)
+);
+Router::connect('/products/:category/:slug',
+	array(
+		'controller' => 'SiteProducts',
+		'action' => 'view',
+		'objectType' => 'Product',
+	),
+	array('pass' => array('slug'))
+);
+
 CakePlugin::routes();
 
 require CAKE.'Config'.DS.'routes.php';
