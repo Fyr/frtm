@@ -1,4 +1,5 @@
 <?
+	$objectType = $this->ArticleVars->getObjectType($article);
 	// $title = $this->ObjectType->getTitle('view', $objectType);
 	/*
 	echo $this->element('bread_crumbs', array('aBreadCrumbs' => array(
@@ -8,7 +9,11 @@
 	)));
 	*/
 ?>
-<div class="block">
-	<?=$this->element('title', array('pageTitle' => $article[$objectType]['title']))?>
-	<?=$this->ArticleVars->body($article)?>
+<div class="casket">
+	<?=$this->element('title', array('title' => $article[$objectType]['title']))?>
+	<div class="carcass">
+		<div class="adminText">
+			<?=$this->ArticleVars->body($article)?>
+		</div>
+	</div>
 </div>

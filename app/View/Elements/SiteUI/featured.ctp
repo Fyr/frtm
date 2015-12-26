@@ -1,7 +1,7 @@
 <div class="propositionList">
 <?
     foreach($aFeatured as $article) {
-        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '276x');
+        $this->ArticleVars->init($article, $url, $title, $teaser, $src, '400x');
 ?>
     <a href="<?=$url?>" class="item">
         <div class="bottom">

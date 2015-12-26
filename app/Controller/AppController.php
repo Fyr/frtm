@@ -49,8 +49,8 @@ class AppController extends Controller {
 			'Home' => array('label' => __('Home'), 'href' => array('controller' => 'Pages', 'action' => 'home')),
 			'Articles' => array('label' => __('Articles'), 'href' => array('controller' => 'Articles', 'action' => 'index')),
 			'Products' => array('label' => __('Products'), 'href' => '', 'submenu' => array()),
-			'klientam' => array('label' => '', 'href' => array('controller' => 'Pages', 'action' => 'view', 'klientam.html')),
-			'onas' => array('label' => '', 'href' => array('controller' => 'Pages', 'action' => 'view', 'onas.html')),
+			'klientam' => array('label' => '', 'href' => array('controller' => 'Pages', 'action' => 'view', 'klientam')),
+			'onas' => array('label' => '', 'href' => array('controller' => 'Pages', 'action' => 'view', 'onas')),
 			'Contacts' => array('label' => __('Contacts'), 'href' => array('controller' => 'Contacts', 'action' => 'index')),
 			// 'Sitemap' => array('label' => __('Site map'), 'href' => array('controller' => 'Sitemap', 'action' => 'index'))
 		);

@@ -1,10 +1,16 @@
-<div class="block">
-	<?=$this->element('title', array('pageTitle' => $article['Page']['title']))?>
-	<?=$this->ArticleVars->body($article)?>
+<div class="casket">
+	<?=$this->element('title', array('title' => $article['Page']['title']))?>
+	<div class="carcass">
+		<div class="adminText">
+			<?=$this->ArticleVars->body($article)?>
+		</div>
+	</div>
 </div>
 
-<div class="block">
-<? echo $this->element('title', array('pageTitle' => __('Send message')));
+<div class="casket">
+	<?=$this->element('title', array('title' => 'Отправить сообщение'))?>
+	<div class="carcass">
+<?
 	echo $this->Form->create('Contact');
 	echo $this->Form->input('Contact.username', array('label' => array('text' => 'Ваше имя')));
 	echo $this->Form->input('Contact.email', array('label' => array('text' => 'Ваш e-mail для обратной связи')));
@@ -14,4 +20,5 @@
 	echo $this->Form->submit(__('Send'));
 	echo $this->Form->end();
 ?>
+	</div>
 </div>

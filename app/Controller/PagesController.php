@@ -3,28 +3,27 @@ App::uses('AppController', 'Controller');
 class PagesController extends AppController {
 	public $name = 'Pages';
 	public $uses = array('Page', 'Product', 'News', 'Media.Media');
-	// public $helpers = array('ArticleVars');
+	public $helpers = array('ArticleVars', 'Core.PHTime');
 
 	public function home() {
 		// Welcome block
 		$article = $this->Page->findBySlug('home');
-		$this->set('article', $article);
-		$this->seo = $article['Seo'];
-		
-		// Новости
-		$conditions = array('News.published' => 1);
-		$order = array('News.created' => 'DESC');
+		$this->set('home_article', $article);
+
+		// Featured articles
+		$conditions = array('SiteArticle.published' => 1, 'SiteArticle.featured' => 1);
+		$order = 'SiteArticle.created DESC';
 		$limit = 3;
-		$news = $this->News->find('all', compact('conditions', 'order', 'limit'));
-		$this->set('news', $news);
-		
-		/*
-		$conditions = array('object_type' => 'Slider');
-		$order = 'created';
-		$aSlider = $this->Media->find('all', compact('conditions', 'order'));
-		*/
-		$this->set('aSlider', $this->Media->getObjectList('Slider'));
-		
+		$aArticles = $this->SiteArticle->find('all', compact('conditions', 'order', 'limit'));
+		$this->set('aArticles', $aArticles);
+
+		// New products
+		$conditions = array('Product.published' => 1); // , 'Media.main' => 1
+		$order = 'Product.created DESC';
+		$limit = 3;
+		$aProducts = $this->Product->find('all', compact('conditions', 'order', 'limit'));
+		$this->set('aProducts', $aProducts);
+
 		$this->currMenu = 'Home';
 	}
 	

@@ -35,10 +35,10 @@ Router::connect('/articles/page/:page', array(
 ),
 	array('named' => array('page' => '[\d]*'))
 );
-
+/*
 Router::connect('/products',
 	array(
-		'controller' => 'SiteProducts',
+		'controller' => 'Products',
 		'action' => 'index',
 		'objectType' => 'Product',
 	),
@@ -46,7 +46,7 @@ Router::connect('/products',
 );
 Router::connect('/products/:category',
 	array(
-		'controller' => 'SiteProducts',
+		'controller' => 'Products',
 		'action' => 'index',
 		'objectType' => 'Product',
 	),
@@ -54,7 +54,7 @@ Router::connect('/products/:category',
 );
 Router::connect('/products/page/:page',
 	array(
-		'controller' => 'SiteProducts',
+		'controller' => 'Products',
 		'action' => 'index',
 		'objectType' => 'Product',
 	),
@@ -62,7 +62,7 @@ Router::connect('/products/page/:page',
 );
 Router::connect('/products/:category/page/:page',
 	array(
-		'controller' => 'SiteProducts',
+		'controller' => 'Products',
 		'action' => 'index',
 		'objectType' => 'Product',
 	),
@@ -73,12 +73,58 @@ Router::connect('/products/:category/page/:page',
 );
 Router::connect('/products/:category/:slug',
 	array(
-		'controller' => 'SiteProducts',
+		'controller' => 'Products',
 		'action' => 'view',
 		'objectType' => 'Product',
 	),
 	array('pass' => array('slug'))
 );
+*/
+
+Router::connect('/products',
+	array(
+		'controller' => 'Products',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('named' => array('page' => 1))
+);
+Router::connect('/products/:category',
+	array(
+		'controller' => 'Products',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('pass' => array('category'))
+);
+Router::connect('/products/page/:page',
+	array(
+		'controller' => 'Products',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array('named' => array('page' => '[\d]*'))
+);
+Router::connect('/products/:category/page/:page',
+	array(
+		'controller' => 'Products',
+		'action' => 'index',
+		'objectType' => 'Product',
+	),
+	array(
+		'pass' => array('category'),
+		'named' => array('page' => '[\d]*')
+	)
+);
+Router::connect('/products/:category/:slug',
+	array(
+		'controller' => 'Products',
+		'action' => 'view',
+		'objectType' => 'Product',
+	),
+	array('pass' => array('slug'))
+);
+
 
 CakePlugin::routes();
 

@@ -11,7 +11,7 @@ class SiteRouter extends Router {
 		$objectType = self::getObjectType($article);
 		if ($objectType == 'Product') {
 			$url = array(
-				'controller' => 'SiteProducts', 
+				'controller' => 'Products',
 				'action' => 'view',
 				'category' => $article['CategoryProduct']['slug'],
 				'objectType' => 'Product',
@@ -19,7 +19,7 @@ class SiteRouter extends Router {
 			);
 		} elseif ($objectType == 'CategoryProduct') {
 			$url = array(
-				'controller' => 'SiteProducts', 
+				'controller' => 'Products',
 				'action' => 'index',
 				'category' => $article['CategoryProduct']['slug'],
 				'objectType' => 'Product'

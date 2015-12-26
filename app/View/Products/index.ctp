@@ -1,35 +1,34 @@
 <?
-	$title = ($currCat) ? $aArticles[0]['CategoryProduct']['title'] : 'Наши услуги';
+	$title = ($category) ? $category['CategoryProduct']['title'] : 'Каталог';
 ?>
-<div class="block">
-	<?=$this->element('title', array('pageTitle' => $title))?>
-	<div class="news">
+<div class="casket">
+	<?=$this->element('title', array('title' => $title))?>
+	<div class="carcass">
+		<ul class="catalog">
 <?
-	foreach($aArticles as $article) {
-		$this->ArticleVars->init($article, $url, $title, $teaser, $src, '200x');
+	foreach($aProducts as $article) {
+		$this->ArticleVars->init($article, $url, $title, $teaser, $src, 'thumb400x400');
 ?>
-		<div class="newsItem">
-<?
-		if ($src) {
-?>
-			<a href="<?=$url?>"><img class="thumb" src="<?=$src?>" alt="<?=h($title)?>" /></a>
-<?
-		}
-?>
-			<div class="description">
-				<a href="<?=$url?>" class="title"><?=$title?></a>
-				<?=$teaser?>
+			<li>
+				<a href="<?=$url?>" class="outerImg">
+					<div class="title"><?=$title?></div>
+					<img src="<?=$src?>" alt="<?=$title?>" class="img-responsive"/>
+				</a>
+
+				<div class="description ellipsis"><?=$teaser?></div>
 				<?=$this->element('more', compact('url'))?>
-			</div>
-		</div>
+			</li>
 <?
 	}
 ?>
-	</div>
+		</ul>
 <?
 	echo $this->element('paginate');
+?>
+	</div>
+</div>
+<?
 	if (isset($category) && $category) {
 		echo $this->ArticleVars->body($category);
 	}
 ?>
-</div>

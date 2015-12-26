@@ -7,7 +7,11 @@
 	)));
 	*/
 ?>
-<div class="block">
-	<?=$this->element('title', array('pageTitle' => $title))?>
-	<?=$this->ArticleVars->body($article)?>
+<div class="casket">
+	<?=$this->element('title', array('title' => $title))?>
+	<div class="carcass">
+		<div class="adminText">
+			<?=$this->ArticleVars->body($article)?>
+		</div>
+	</div>
 </div>

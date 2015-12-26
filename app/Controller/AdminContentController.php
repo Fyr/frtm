@@ -101,8 +101,9 @@ class AdminContentController extends AdminController {
 			$this->currMenu = 'Catalog';
 		}
 		
-		if (!$this->request->data('Article.sorting')) {
+		if (!$this->request->is(array('put', 'post'))) {
 			$this->request->data('Article.sorting', '0');
+			$this->request->data('Article.status', array('published'));
 		}
 
 	}

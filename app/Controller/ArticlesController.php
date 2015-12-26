@@ -6,9 +6,9 @@ App::uses('News', 'Model');
 class ArticlesController extends AppController {
 	public $name = 'Articles';
 	public $uses = array('SiteArticle', 'News');
-	public $helpers = array('ObjectType');
+	public $helpers = array('ObjectType', 'Core.PHTime');
 	
-	const PER_PAGE = 5;
+	const PER_PAGE = 2;
 	
 	protected $objectType;
 
