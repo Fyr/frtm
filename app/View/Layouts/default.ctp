@@ -132,7 +132,7 @@
 				</div>
 				<div class="email">
 					<span class="icon icon-email-grey"></span>
-					<span class="text">formetrum@mail.ru</span>
+					<span class="text"><a href="mailto:formetrum@mail.ru">formetrum@mail.ru</a></span>
 				</div>
 			</div>
 		</div>

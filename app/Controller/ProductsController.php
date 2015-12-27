@@ -28,13 +28,26 @@ class ProductsController extends AppController {
 			'order' => array('Product.created' => 'DESC')
 		);
 		
-		if ($q = $this->request->query('q')) {
-			$this->paginate['conditions']['Product.title LIKE '] = '%'.$q.'%';
+		if ($filter = $this->request->query('filter')) {
+
+			if (isset($filter['title']) && $filter['title']) {
+				$this->paginate['conditions']['Product.title LIKE '] = '%'.$filter['title'].'%';
+			}
+
+			if (isset($filter['cat_id']) && trim($filter['cat_id'])) {
+				$this->paginate['conditions']['Product.cat_id'] = intval($filter['cat_id']);
+			}
+			if (isset($filter['price_from']) && $filter['price_from']) {
+				$this->paginate['conditions']['Product.price > '] = intval($filter['price_from']);
+			}
+			if (isset($filter['price_to']) && $filter['price_to']) {
+				$this->paginate['conditions']['Product.price < '] = intval($filter['price_to']);
+			}
 		} elseif ($catSlug) {
 			$this->paginate['conditions']['CategoryProduct.slug'] = $catSlug;
 			$this->set('category', $this->CategoryProduct->findBySlug($catSlug));
 		}
-		$this->set('q', $q);
+		// $this->set('q', $q);
 		
 		
 		$aProducts = $this->paginate('Product');

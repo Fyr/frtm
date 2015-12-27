@@ -1,5 +1,8 @@
 <?
-	$title = ($category) ? $category['CategoryProduct']['title'] : 'Каталог';
+	$title = (isset($category) && $category) ? $category['CategoryProduct']['title'] : 'Каталог продукции';
+	if ($this->request->query('filter')) {
+		$title = 'Результаты поиска';
+	}
 ?>
 <div class="casket">
 	<?=$this->element('title', array('title' => $title))?>
