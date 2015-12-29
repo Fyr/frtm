@@ -82,7 +82,7 @@ class PMFormData extends AppModel {
 		}
 		return false;
 	}
-	
+
 	public function recalcFormula($id, $aFormFields) {
 		$this->loadModel('PMFormField');
 		$data = $this->findById($id);
@@ -105,5 +105,28 @@ class PMFormData extends AppModel {
 			}
 		}
 		return $this->save($_data);
+	}
+
+	public function postFormula($data, $aFormFields) {
+		$this->loadModel('PMFormField');
+		$aData = array();
+		$aFormula = array();
+		foreach($aFormFields as $row) {
+			$field_id = $row['PMFormField']['id'];
+			if ($row['PMFormField']['field_type'] == FieldTypes::FORMULA) {
+				$aFormula['fk_'.$field_id] = $row['PMFormField'];
+			}
+			if ($row['PMFormField']['key']) {
+				$aData[$row['PMFormField']['key']] = Hash::get($data, 'PMFormData.fk_'.$field_id);
+			}
+		}
+		$_data = array('PMFormData' => array());
+		if ($aFormula) {
+			foreach($aFormula as $formula) {
+				$field_id = $formula['id'];
+				$_data['PMFormData']['fk_'.$field_id] = $this->PMFormField->calcFormula($formula['options'], $aData);
+			}
+		}
+		return $_data;
 	}
 }

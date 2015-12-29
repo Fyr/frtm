@@ -3,6 +3,7 @@ App::uses('Controller', 'Controller');
 App::uses('SiteRouter', 'Lib/Routing');
 App::uses('AppModel', 'Model');
 App::uses('Article', 'Article.Model');
+App::uses('PMFormData', 'Form.Model');
 App::uses('Media', 'Media.Model');
 App::uses('CategoryProduct', 'Model');
 App::uses('Settings', 'Model');
@@ -24,7 +25,7 @@ class AppController extends Controller {
 	}
 	
 	protected function _beforeInit() {
-	    $this->helpers = array_merge(array('Html', 'Form', 'Paginator', 'Media', 'ArticleVars'), $this->helpers);
+	    $this->helpers = array_merge(array('Html', 'Form', 'Paginator', 'Media', 'ArticleVars', 'Form.PHFormData'), $this->helpers);
 	}
 
 	protected function _afterInit() {
@@ -58,7 +59,10 @@ class AppController extends Controller {
 		
 		$this->currMenu = $this->_getCurrMenu();
 	    $this->currLink = $this->currMenu;
-	    
+
+		$this->loadModel('Form.PMFormField');
+		$this->aProductParams = $this->PMFormField->getObjectList('CategoryParam', '');
+		$this->aProductParams = Hash::combine($this->aProductParams, '{n}.PMFormField.id', '{n}', '{n}.PMFormField.object_id');
 	}
 	
 	protected function _getCurrMenu() {
@@ -112,6 +116,7 @@ class AppController extends Controller {
 		$aFeatured = $this->Product->getRandomRows(3, array('object_type' => 'Product', 'published' => 1, 'featured' => 1));
 		$this->set('aFeatured', $aFeatured);
 
+		$this->set('aProductParams', $this->aProductParams);
 		$this->set('aNavBar', $this->aNavBar);
 		$this->set('seo', $this->seo);
 		$this->set('currCat', $this->currCat);

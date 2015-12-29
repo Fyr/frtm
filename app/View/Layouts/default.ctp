@@ -32,7 +32,7 @@
 <body>
 <div class="header">
 	<div class="wrapper clearfix">
-		<a href="#" class="logo"></a>
+		<a href="/" class="logo"></a>
 		<ul class="menu menuMobile">
 			<li>
 				<a href="javascript: void(0)">Меню</a>
@@ -111,7 +111,7 @@
 
 <div class="footer">
 	<div class="wrapper clearfix">
-		<a href="javascript: void(0)" class="logo"></a>
+		<a href="/" class="logo"></a>
 		<ul class="menu clearfix">
 			<li class="active"><span class="icon icon-point-grey"></span><a href="#">Главная</a></li>
 			<li><span class="icon icon-point-grey"></span><a href="#">Каталог</a></li>
@@ -141,5 +141,6 @@
 <div class="copyright">
 	<div class="wrapper">© Copyright 2014 – 2015 “Фор Метрум”</div>
 </div>
+<?//$this->element('sql_dump')?>
 </body>
 </html>

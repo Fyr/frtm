@@ -36,7 +36,7 @@
 	}
 ?>
 	</div>
-<?
-	echo $this->element('paginate');
-?>
 </div>
+<?
+echo $this->element('paginate');
+?>

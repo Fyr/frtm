@@ -14,7 +14,10 @@
 ?>
 			<li>
 				<a href="<?=$url?>" class="outerImg">
-					<div class="title"><?=$title?></div>
+					<div class="title">
+						<span><?=$title?></span>
+						<span class="vert"></span>
+					</div>
 					<img src="<?=$src?>" alt="<?=$title?>" class="img-responsive"/>
 				</a>
 
@@ -25,12 +28,10 @@
 	}
 ?>
 		</ul>
-<?
-	echo $this->element('paginate');
-?>
 	</div>
 </div>
 <?
+	echo $this->element('paginate');
 	if (isset($category) && $category) {
 		echo $this->ArticleVars->body($category);
 	}

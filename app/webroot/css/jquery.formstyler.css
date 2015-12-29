@@ -423,6 +423,7 @@ input[type='search'].styler,
 input[type='tel'].styler,
 input[type='text'].styler,
 input[type='url'].styler,
+input.input-small,
 textarea.styler { border: 1px solid #9f8654; background: #f6f3f3; padding: 0 5px 0 5px;  display: inline-block;  font-family: 'Open Sans',sans-serif; box-sizing: border-box; font-size: 14px; height: 25px; outline: none; resize: none;
 }
 
@@ -438,6 +439,7 @@ input[type='search'].styler:hover,
 input[type='tel'].styler:hover,
 input[type='text'].styler:hover,
 input[type='url'].styler:hover,
+input.input-small:hover,
 textarea.styler:hover {
 	
 }
@@ -447,6 +449,7 @@ input[type='search'].styler:focus,
 input[type='tel'].styler:focus,
 input[type='text'].styler:focus,
 input[type='url'].styler:focus,
+input.input-small:focus,
 textarea.styler:focus {
 	background: #fff;
 }
@@ -455,6 +458,11 @@ input[type='text'].styler::-webkit-input-placeholder { color: #736259; opacity: 
 input[type='text'].styler::-moz-placeholder          {color: #736259; opacity: 1; }/* Firefox 19+ */
 input[type='text'].styler:-moz-placeholder           {color: #736259; opacity: 1; }/* Firefox 18- */
 input[type='text'].styler:-ms-input-placeholder { color: #736259; opacity: 1; }
+
+input[type='text'].input-small::-webkit-input-placeholder { color: #736259; opacity: 1;}
+input[type='text'].input-small::-moz-placeholder          {color: #736259; opacity: 1; }/* Firefox 19+ */
+input[type='text'].input-small:-moz-placeholder           {color: #736259; opacity: 1; }/* Firefox 18- */
+input[type='text'].input-small:-ms-input-placeholder { color: #736259; opacity: 1; }
 
 button.styler,
 input[type='button'].styler,
