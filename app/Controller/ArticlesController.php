@@ -8,7 +8,7 @@ class ArticlesController extends AppController {
 	public $uses = array('SiteArticle', 'News');
 	public $helpers = array('ObjectType', 'Core.PHTime');
 	
-	const PER_PAGE = 2;
+	const PER_PAGE = 6;
 	
 	protected $objectType;
 

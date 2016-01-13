@@ -5,14 +5,14 @@ $(document).ready(function(){
 		$('.menu li ul').stop().slideUp();
 		if ( $(this).next().is('ul') ) {
 			$(this).next('ul').stop().slideToggle();
-			$(this).closest('li').toggleClass('active');
+			$(this).closest('li').toggleClass('active1');
 		}
 	});
         
 	$(document).on('click touchstart', function(e) {
 		if ( !$.contains($('.menuDesktop').get(0), e.target)  ) {
 			$('.menuDesktop li ul').stop().slideUp('slow', function(){
-				$('.menuDesktop li ul').closest('li').removeClass('active');	
+				$('.menuDesktop li ul').closest('li').removeClass('active1');	
 			});
 
 		}

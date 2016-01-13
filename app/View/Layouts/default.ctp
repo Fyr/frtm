@@ -53,23 +53,22 @@
 							<span class="icon icon-map-brown"></span>
 							<i class="vert"></i>
 						</span>
-						<span class="text">
-						Беларусь, Брестская обл., Брестул, Героев  Обороны Брестской Крепости, д. 48-62 п.2224018</span>
+						<span class="text"><?=Configure::read('Settings.office_address')?></span>
 			</div>
 			<div class="contacts">
 				<div class="phone">
-							<span class="round">
-								<span class="icon icon-phone-brown"></span>
-								<i class="vert"></i>
-							</span>
-					<span class="text">+37529527-74-33<br />+37529527-74-33</span>
+					<span class="round">
+						<span class="icon icon-phone-brown"></span>
+						<i class="vert"></i>
+					</span>
+					<span class="text"><?=Configure::read('Settings.phone1')?><br /><?=Configure::read('Settings.phone2')?></span>
 				</div>
 				<div class="email">
-							<span class="round">
-								<span class="icon icon-email-brown"></span>
-								<i class="vert"></i>
-							</span>
-					<span class="text">formetrum@mail.ru</span>
+					<span class="round">
+						<span class="icon icon-email-brown"></span>
+						<i class="vert"></i>
+					</span>
+					<span class="text"><a href="mailto:<?=Configure::read('Settings.admin_email')?>"><?=Configure::read('Settings.admin_email')?></a></span>
 				</div>
 			</div>
 
@@ -123,23 +122,23 @@
 		<div class="info">
 			<div class="address">
 				<span class="icon icon-map-grey"></span>
-				<span class="text">Беларусь, Брестская обл., Брестул, Героев  Обороны Брестской Крепости, д. 48-62 п.2224018</span>
+				<span class="text"><?=Configure::read('Settings.office_address')?></span>
 			</div>
 			<div class="contacts">
 				<div class="phone">
 					<span class="icon icon-phone-grey"></span>
-					<span class="text">+37529527-74-33<br>+37529527-74-33</span>
+					<span class="text"><?=Configure::read('Settings.phone1')?><br /><?=Configure::read('Settings.phone2')?></span>
 				</div>
 				<div class="email">
 					<span class="icon icon-email-grey"></span>
-					<span class="text"><a href="mailto:formetrum@mail.ru">formetrum@mail.ru</a></span>
+					<span class="text"><a href="mailto:<?=Configure::read('Settings.admin_email')?>"><?=Configure::read('Settings.admin_email')?></a></span>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 <div class="copyright">
-	<div class="wrapper">© Copyright 2014 – 2015 “Фор Метрум”</div>
+	<div class="wrapper">© Copyright <?=date('Y')?> “Фор Метрум”</div>
 </div>
 <?//$this->element('sql_dump')?>
 </body>

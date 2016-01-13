@@ -13,5 +13,6 @@
 		<div class="adminText">
 			<?=$this->ArticleVars->body($article)?>
 		</div>
+		<a href="/">На главную</a>
 	</div>
 </div>

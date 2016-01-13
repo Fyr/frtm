@@ -13,13 +13,13 @@ if (Configure::read('debug') > 0):
 endif;
  */
 ?>
-<?
-echo $this->element('title', array('pageTitle' => __('Page not found')));
-?>
-<div class="block">
-	<p><b>Внимание!</b> По вашему запросу произошла ошибка сервера.<br />
-		Наши специалисты уже занимаются ей, в ближайее время ошибка будет исправлена.<br />
-		<br />
-		<a href="/">На главную</a>
-	</p>
+<div class="casket">
+	<?=$this->element('title', array('title' => __('Page not found')));?>
+	<div class="carcass" style="margin-top: 20px">
+		<p><b>Внимание!</b> По вашему запросу произошла ошибка сервера.<br />
+			Наши специалисты уже занимаются ей, в ближайее время ошибка будет исправлена.<br />
+			<br />
+			<a href="/">На главную</a>
+		</p>
+	</div>
 </div>

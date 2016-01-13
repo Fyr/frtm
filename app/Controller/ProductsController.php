@@ -13,7 +13,7 @@ class ProductsController extends AppController {
 	public $components = array('Recaptcha.Recaptcha');
 	public $helpers = array('Media.PHMedia', 'Core.PHTime', 'Recaptcha.Recaptcha');
 	
-	const PER_PAGE = 3;
+	const PER_PAGE = 9;
 	
 	public function beforeFilter() {
 		$this->objectType = $this->getObjectType();
@@ -63,7 +63,6 @@ class ProductsController extends AppController {
 			$this->paginate['conditions']['CategoryProduct.slug'] = $catSlug;
 			$this->set('category', $this->CategoryProduct->findBySlug($catSlug));
 		}
-
 		$aProducts = $this->paginate('Product');
 		if (!$aProducts) {
 			return $this->redirect404();
