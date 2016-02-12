@@ -33,19 +33,7 @@
 <div class="header">
 	<div class="wrapper clearfix">
 		<a href="/" class="logo"></a>
-		<ul class="menu menuMobile">
-			<li>
-				<a href="javascript: void(0)">Меню</a>
-				<ul style="display: none">
-					<li><a href="javascript: void(0)">Главная</a></li>
-					<li><a href="javascript: void(0)">Статьи</a></li>
-					<li><a href="javascript: void(0)">Каталог</a></li>
-					<li><a href="javascript: void(0)">Клиентам</a></li>
-					<li><a href="javascript: void(0)">О нас</a></li>
-					<li><a href="javascript: void(0)">Контакты</a></li>
-				</ul>
-			</li>
-		</ul>
+		<?=$this->element('SiteUI/main_menu_mob')?>
 		<div class="info">
 
 			<div class="address">
