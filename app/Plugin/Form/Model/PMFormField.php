@@ -6,7 +6,7 @@ class PMFormField extends AppModel {
 	
 	public $validate = array(
 		'key' => array(
-			'rule' => '/^([A-Z])+([A-Z0-9])*$/',
+			'rule' => '/^([A-Z])+([a-zA-Z0-9])*$/',
 			'allowEmpty' => true,
 			'message' => 'Неверный формат ключа. Пример: A, B1, AA, ABCDEF'
 		),
@@ -81,15 +81,15 @@ class PMFormField extends AppModel {
 	
 	public function calcFormula($options, $aData) {
 		$formula = $this->unpackFormulaOptions($options);
-    	extract($aData);
-    	$_res = 0;
-    	eval('$_res = '.$formula['formula'].';');
-    	return $this->formatFormula($_res, $formula);
-    }
+		extract($aData);
+		$_res = 0;
+		eval('$_res = '.$formula['formula'].';');
+		return $this->formatFormula($_res, $formula);
+	}
     
 	public function formatFormula($_res, $formula) {
-    	return ($_res) ? number_format($_res, $formula['decimals'], $formula['div_float'], $formula['div_int']) : '';
-    }
+		return ($_res) ? number_format($_res, $formula['decimals'], $formula['div_float'], $formula['div_int']) : '';
+	}
     
     public function getFieldsList($object_type, $object_id) {
     	$aFields = $this->getObjectList($object_type, $object_id, 'PMFormField.sort_order');

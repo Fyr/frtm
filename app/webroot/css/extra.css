@@ -3,3 +3,5 @@
 	color: #f00;
 }
 .pagination {margin: 10px 0;}
+
+.input.text, .input.select { padding-top :10px;}

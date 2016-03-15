@@ -83,6 +83,16 @@ class PMFormData extends AppModel {
 		return false;
 	}
 
+	protected function _getFormulaValue($data, $field_id, $type) {
+		$value = Hash::get($data, 'PMFormData.fk_'.$field_id);
+		if ($type == FieldTypes::FLOAT) {
+			$value = floatval(str_replace(',', '.', $value));
+		} elseif ($type == FieldTypes::INT) {
+			$value = intval($value);
+		}
+		return $value;
+	}
+
 	public function recalcFormula($id, $aFormFields) {
 		$this->loadModel('PMFormField');
 		$data = $this->findById($id);
@@ -94,7 +104,7 @@ class PMFormData extends AppModel {
 				$aFormula['fk_'.$field_id] = $row['PMFormField'];
 			}
 			if ($row['PMFormField']['key']) {
-				$aData[$row['PMFormField']['key']] = Hash::get($data, 'PMFormData.fk_'.$field_id);
+				$aData[$row['PMFormField']['key']] = $this->_getFormulaValue($data, $field_id, $row['PMFormField']['field_type']);
 			}
 		}
 		$_data = array('PMFormData' => array('id' => $id));
@@ -117,7 +127,7 @@ class PMFormData extends AppModel {
 				$aFormula['fk_'.$field_id] = $row['PMFormField'];
 			}
 			if ($row['PMFormField']['key']) {
-				$aData[$row['PMFormField']['key']] = Hash::get($data, 'PMFormData.fk_'.$field_id);
+				$aData[$row['PMFormField']['key']] = $this->_getFormulaValue($data, $field_id, $row['PMFormField']['field_type']);
 			}
 		}
 		$_data = array('PMFormData' => array());

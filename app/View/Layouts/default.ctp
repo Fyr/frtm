@@ -128,6 +128,21 @@
 <div class="copyright">
 	<div class="wrapper">© Copyright <?=date('Y')?> “Фор Метрум”</div>
 </div>
+<?
+	if (!TEST_ENV) {
+?>
+		<!-- BEGIN JIVOSITE CODE {literal} -->
+		<script type='text/javascript'>
+			(function(){ var widget_id = '2SvdxDg6iv';
+				var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = '//code.jivosite.com/script/widget/'+widget_id; var ss = document.getElementsByTagName('script')[0]; ss.parentNode.insertBefore(s, ss);})();</script>
+		<!-- {/literal} END JIVOSITE CODE -->
+
+		<!-- Yandex.Metrika counter --> <script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter35856870 = new Ya.Metrika({ id:35856870, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true, ecommerce:"dataLayer" }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");
+		</script> <noscript><div><img src="https://mc.yandex.ru/watch/35856870" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
+
+<?
+	}
+?>
 <?//$this->element('sql_dump')?>
 </body>
 </html>
